@@ -73,6 +73,7 @@ class Test(MDApp):
         ts = float(self.root.ids.ts01.text)
         po = float(self.root.ids.po01.text)
         label_result = self.root.ids['resultado']
+        # print(label_result)
         r = get_P_y_K(po, ts)
         label_result.text = r
         print(r)

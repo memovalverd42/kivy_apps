@@ -2,9 +2,15 @@
 
 MDBoxLayout:
     orientation: "vertical"
+    conf_temp: temp01
+    conf_hum: hum01
+    conf_venti_icon: venti01
+    conf_foco_icon: foco01
 
     MDTopAppBar:
-        title: "CONTROL DE INCUVADORA"
+        title: "CONTROL DE INCUBADORA"
+        pos_hint: {"center_x": .5, "center_y": .5}
+    
         md_bg_color: 8/255, 32/255, 50/255, 1
         # left_action_items: [["menu", lambda x: app.callback(x)]]
         # right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
@@ -21,7 +27,7 @@ MDBoxLayout:
                 pos: self.pos
         
         Image:
-            source: './incubadora.png'
+            source: './images/incubadora.png'
             pos_hint: {"center_x": .5, "center_y": .5}
             # center_x: self.parent.center_x
             # center_y: self.parent.center_y
@@ -34,7 +40,7 @@ MDBoxLayout:
                 orientation: 'horizontal'
                 canvas.before:
                     Color:
-                        rgb: 0.8, 1, 0.5
+                        rgb: 44/255, 57/255, 75/255, 1
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -49,12 +55,12 @@ MDBoxLayout:
                     text_size: 200, 200
                     halign: "center"
                     valign: 'top'
-                    canvas.before:
-                        Color:
-                            rgb: 0.5, 1, 0.5
-                        Rectangle:
-                            size: self.size
-                            pos: self.pos
+                    # canvas.before:
+                    #     Color:
+                    #         rgb: 0.5, 1, 0.5
+                    #     Rectangle:
+                    #         size: self.size
+                    #         pos: self.pos
                     # pos_hint: {'center_x': 0.5, 'y': 0.2}
                     # center_x: self.parent.center_x
                     # center_y: self.parent.center_y
@@ -83,7 +89,7 @@ MDBoxLayout:
                 orientation: 'horizontal'
                 canvas.before:
                     Color:
-                        rgb: 0.8, 1, 0.5
+                        rgb: 44/255, 57/255, 75/255, 1
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -91,12 +97,12 @@ MDBoxLayout:
                     MDFillRoundFlatButton:
                         md_bg_color: 255/255, 76/255, 41/255, 1
                         text: "Establecer"
-                        # on_press: app.HOLA()
+                        on_press: app.set_points()
             MDBoxLayout:
                 orientation: 'horizontal'
                 canvas.before:
                     Color:
-                        rgb: 0.8, 1, 0.5
+                        rgb: 44/255, 57/255, 75/255, 1
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -143,7 +149,9 @@ MDBoxLayout:
                     size_hint: 1, 1
                     Button:
                         background_color: 1, 1, 1, 0
+                        on_press: app.toggle_fan()
                         Image:
+                            id: venti01
                             source: './ventiladorON.gif'
                             center_x: self.parent.center_x
                             center_y: self.parent.center_y
@@ -160,8 +168,10 @@ MDBoxLayout:
                     size_hint: 1, 1
                     Button:
                         background_color: 1, 1, 1, 0
+                        on_press: app.toggle_light()
                         Image:
-                            source: './focoOFF.png'
+                            id: foco01
+                            source: './images/focoOFF.png'
                             center_x: self.parent.center_x
                             center_y: self.parent.center_y
                     MDLabel:
@@ -186,7 +196,7 @@ MDBoxLayout:
                 font_size: 25
                 canvas.before:
                     Color:
-                        rgb: 0.5, 1, 0.5
+                        rgb: 8/255, 32/255, 50/255, 1
                     Rectangle:
                         size: self.size
                         pos: self.pos
@@ -208,7 +218,7 @@ MDBoxLayout:
                 font_size: 25
                 canvas.before:
                     Color:
-                        rgb: 0.5, 1, 0.5
+                        rgb: 8/255, 32/255, 50/255, 1
                     Rectangle:
                         size: self.size
                         pos: self.pos
