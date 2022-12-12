@@ -1,1 +1,4 @@
 /env
+/picoproyecto/.buildozer
+/picoproyecto/bin
+/picoproyecto/sensor.db
