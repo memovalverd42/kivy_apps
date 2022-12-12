@@ -1,0 +1,123 @@
+#:kivy 2.0.0
+MDBoxLayout:
+    orientation: "vertical"
+    por_ov: po01
+    t_ase: ts01
+    result: resultado
+    MDTopAppBar:
+        title: "RESPUESTA TRANSITORIA EN SISTEMAS DE ORDEN 2"
+        md_bg_color: 8/255, 32/255, 50/255, 1
+        # left_action_items: [["menu", lambda x: app.callback(x)]]
+        right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 1.5
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            canvas:
+                Color:
+                    rgba: 44/255, 57/255, 75/255, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDLabel:
+                text: "Tiempo de Asentamiento (segundos)"
+                color: 255/255, 255/255, 255/255, 1
+                size_hint: 0.5, 1
+                halign: "center"
+
+            MDSlider:
+                min: 0.5
+                max: 10
+                step: 0.5
+                color: 255/255, 255/255, 255/255, 1
+                hint_bg_color: 255/255, 255/255, 255/255, 1
+                hint_text_color: 44/255, 5/255, 75/255, 1
+                orientation: 'horizontal'
+                on_value: app.slider(*args)
+
+        MDBoxLayout:
+            size_hint: 1, 0.6
+            canvas:
+                Color:
+                    rgba: 51/255, 71/255, 86/255, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDLabel:
+                text: "INDICAR VALORES MANUALMENTE"
+                color: 255/255, 255/255, 255/255, 1
+                
+                halign: "center"
+                valign: "center"
+         
+
+        
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: 20
+            canvas:
+                Color:
+                    rgba: 51/255, 71/255, 86/255, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDBoxLayout:
+                orientation: 'vertical'
+                
+                # size_hint_x: 0.5
+                MDTextField:
+                    id: po01
+                    size_hint_x: .8
+                    hint_text: "Porcentaje de Overshoot"
+                    line_color_normal:255/255, 76/255, 41/255, 1
+                    line_color_focus: 255/255, 255/255, 255/255, 1
+                    hint_text_color_normal: 255/255, 255/255, 255/255, 1
+                    hint_text_color_focus:255/255, 76/255, 41/255, 1
+                    text_color_normal: 255/255, 255/255, 255/255, 1
+                    pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDTextField:
+                
+                    id: ts01
+                    hint_text: "Tiempo de asentamiento"
+                    size_hint_x: .8
+                    line_color_normal:255/255, 76/255, 41/255, 1
+                    line_color_focus: 255/255, 255/255, 255/255, 1
+                    hint_text_color_normal: 255/255, 255/255, 255/255, 1
+                    hint_text_color_focus:255/255, 76/255, 41/255, 1
+                    text_color_normal: 255/255, 255/255, 255/255, 1
+                    pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            canvas:
+                Color:
+                    rgba: 8/255, 32/255, 50/255, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDBoxLayout:
+                AnchorLayout:
+                    MDFillRoundFlatButton:
+                        md_bg_color: 255/255, 76/255, 41/255, 1
+                        text: "Calcular"
+                        on_press: app.calculo()
+
+
+            MDBoxLayout:
+                padding: 10
+                MDLabel:
+                    id: resultado
+                    text: "Resultado"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+        
+
+    

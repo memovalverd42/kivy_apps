@@ -1,0 +1,129 @@
+#:kivy 2.0.0
+
+
+<BoxAplication>:
+    orientation: 'vertical'
+    nm: mag01
+    nf: fase01
+    n2m: mag02
+    n2f: fase02
+    wm: mag03
+    wf: fase03    
+    result: resultado01
+    padding: 10
+    background_color: 255/255, 243/255, 228/255, 1
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        size_hint: 1, 0.4
+        Label:
+            text: 'Balanceo de Rotor en un Plano'
+            background_color: 72/255, 52/255, 52/255, 1
+            font_size: '20sp'
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 1.5
+        spacing: 10
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Tal cual'
+                background_color: 107/255, 79/255, 79/255, 1
+                font_size: '20sp'
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            TextInput:
+                id: mag01
+                multiline: False
+                hint_text: 'Magnitud'
+                
+            TextInput:
+                id: fase01
+                multiline: False
+                hint_text: 'Angulo de posicion en grados'
+        
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Peso de Prueba'
+                background_color: 107/255, 79/255, 79/255, 1
+                font_size: '20sp'
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            TextInput:
+                id: mag03
+                multiline: False
+                hint_text: 'Peso'
+            TextInput:
+                id: fase03
+                multiline: False
+                hint_text: 'Angulo de posicion en grados'
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Con Peso de Prueba'
+                background_color: 107/255, 79/255, 79/255, 1
+                font_size: '20sp'
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            TextInput:
+                id: mag02
+                multiline: False
+                hint_text: 'Magnitud'
+            TextInput:
+                id: fase02
+                multiline: False
+                hint_text: 'Angulo de posicion en grados'
+        
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        Button:
+            text: "Calcular Peso de corrección"
+            font_size: '20sp'
+            background_color: 107/255, 79/255, 79/255, 1
+            on_press: root.calculo()
+
+        
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 0.3
+        Label:
+            id: resultado01
+            text: '0 < 0°'
+            background_color: 72/255, 52/255, 52/255, 1
+            font_size: '20sp'
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos

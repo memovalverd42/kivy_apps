@@ -1,0 +1,262 @@
+#:kivy 2.1.0
+
+MDBoxLayout:
+    orientation: "vertical"
+
+    MDTopAppBar:
+        title: "CONTROL DE INCUVADORA"
+        md_bg_color: 8/255, 32/255, 50/255, 1
+        # left_action_items: [["menu", lambda x: app.callback(x)]]
+        # right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+
+######################################### Imagen de Incuvadora ###########
+        canvas:
+            Color:
+                rgba: 44/255, 57/255, 75/255, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        
+        Image:
+            source: './incubadora.png'
+            pos_hint: {"center_x": .5, "center_y": .5}
+            # center_x: self.parent.center_x
+            # center_y: self.parent.center_y
+
+######################################### Configuracion de los parametro ###########
+        MDBoxLayout:
+            orientation: 'vertical'
+            # margin: 0.3
+            MDBoxLayout:
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgb: 0.8, 1, 0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDBoxLayout:
+                orientation: 'horizontal'
+                MDLabel:
+                    text: 'Configurar Parametros'
+                    size: self.size
+                    color: 1, 1, 1, 1
+                    bold: True
+                    font_size: 32
+                    text_size: 200, 200
+                    halign: "center"
+                    valign: 'top'
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 1, 0.5
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    # pos_hint: {'center_x': 0.5, 'y': 0.2}
+                    # center_x: self.parent.center_x
+                    # center_y: self.parent.center_y
+            MDTextField:
+                id: temp01
+                size_hint_x: 0.8
+                # size_hint_y: 0.2
+                hint_text: 'Grados Celsius °C'
+                line_color_normal:255/255, 76/255, 41/255, 1
+                line_color_focus: 255/255, 255/255, 255/255, 1
+                hint_text_color_normal: 255/255, 255/255, 255/255, 1
+                hint_text_color_focus:255/255, 76/255, 41/255, 1
+                text_color_normal: 255/255, 255/255, 255/255, 1
+                pos_hint: {"center_x": .5, "center_y": 100}
+            MDTextField:
+                id: hum01
+                size_hint_x: 0.8
+                hint_text: 'Porcentaje de Humedad (%)'
+                line_color_normal:255/255, 76/255, 41/255, 1
+                line_color_focus: 255/255, 255/255, 255/255, 1
+                hint_text_color_normal: 255/255, 255/255, 255/255, 1
+                hint_text_color_focus:255/255, 76/255, 41/255, 1
+                text_color_normal: 255/255, 255/255, 255/255, 1
+                pos_hint: {"center_x": .5, "center_y": .5}
+            MDBoxLayout:
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgb: 0.8, 1, 0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                AnchorLayout:
+                    MDFillRoundFlatButton:
+                        md_bg_color: 255/255, 76/255, 41/255, 1
+                        text: "Establecer"
+                        # on_press: app.HOLA()
+            MDBoxLayout:
+                orientation: 'horizontal'
+                canvas.before:
+                    Color:
+                        rgb: 0.8, 1, 0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+    
+######################################### Control de ventilador ###########
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 1
+
+        canvas:
+            Color:
+                rgba: 51/255, 71/255, 86/255, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            # size_hint: 1, 1
+
+            MDLabel:
+                text: 'Control de Luz y Ventilacion'
+                size_hint: 1,0.5
+                halign: "center"
+                # valign: 'top'       
+                # size: self.size
+                color: 1, 1, 1, 1
+                bold: True
+                font_size: 32
+                text_size: 200, 200
+                # canvas.before:
+                #     Color:
+                #         rgb: 0.5, 1, 0.5
+                #     Rectangle:
+                #         size: self.size
+                #         pos: self.pos
+            
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint: 1, 1
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 1, 1
+                    Button:
+                        background_color: 1, 1, 1, 0
+                        Image:
+                            source: './ventiladorON.gif'
+                            center_x: self.parent.center_x
+                            center_y: self.parent.center_y
+                    MDLabel:
+                        text: 'Ventilador'
+                        # size_hint: 0.5, 1
+                        halign: "center"
+                        color: 1, 1, 1, 1
+                        bold: True
+                        font_size: 25
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 1, 1
+                    Button:
+                        background_color: 1, 1, 1, 0
+                        Image:
+                            source: './focoOFF.png'
+                            center_x: self.parent.center_x
+                            center_y: self.parent.center_y
+                    MDLabel:
+                        text: 'Luz'
+                        # size_hint: 0.5, 1
+                        halign: "center"
+                        halign: "center"
+                        color: 1, 1, 1, 1
+                        bold: True
+                        font_size: 25
+
+    ######################################### Indicadores de temperatura ###########
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 1
+            MDLabel:
+                text: 'Temperatura'
+                # size_hint: 0.5, 1
+                halign: "center"
+                color: 1, 1, 1, 1
+                bold: True
+                font_size: 25
+                canvas.before:
+                    Color:
+                        rgb: 0.5, 1, 0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                id: temp02
+                text: '28C'
+                # size_hint: 0.5, 1
+                halign: "center"
+                color: 1, 1, 1, 1
+                bold: True
+                font_size: 25
+            MDLabel:
+                id: hum02
+                text: 'Humedad'
+                # size_hint: 0.5, 1
+                halign: "center"
+                color: 1, 1, 1, 1
+                bold: True
+                font_size: 25
+                canvas.before:
+                    Color:
+                        rgb: 0.5, 1, 0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            MDLabel:
+                text: '80%'
+                # size_hint: 0.5, 1
+                halign: "center"
+                color: 1, 1, 1, 1
+                bold: True
+                font_size: 25
+
+
+
+
+    # canvas.before:
+    #     # Rectangle:
+    #     #     pos: self.pos
+    #     #     size: self.size
+    #     #     # source: './background1.jpg'  # 'Background.jpeg'
+    #     #     source: './ventiladorON.gif'
+    #     #     allow_stretch: True
+    #     #     anim_available: True
+    #     # Image:
+    #     #     id: gif
+    #     #     source: './ventiladorON.gif'
+    #     #     center: self.parent.center
+    #     #     size: 500, 500
+    #     #     allow_stretch: True
+    #     #     anim_available: True
+    #     #     # anim_delay: 1
+    #     #     # anim_loop: 1
+    #     #     # anim_delay: -1
+    #     #     # anim_loop: 1
+
+    # FitImage:
+    #     source: './ventiladorON.gif'
+    #     size_hint_y: .35
+    #     pos_hint: {"top": 1}
+    #     radius: 36, 36, 0, 0
+
+    # Image:
+    #     id: gif
+    #     source: './ventiladorON.gif'
+    #     center: self.parent.center
+    #     size: 500, 500
+    #     allow_stretch: True
+    #     anim_available: True
+    #     # anim_delay: 1
+    #     # anim_loop: 1
+    #     # anim_delay: -1
+    #     # anim_loop: 1

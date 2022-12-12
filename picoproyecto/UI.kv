@@ -1,0 +1,161 @@
+#:kivy 2.0.0
+
+MDBoxLayout:
+    orientation: "vertical"
+    
+    result: resultado
+    MDTopAppBar:
+        id: titulo01
+        title: "TANQUE CUADRADO"
+        md_bg_color: 8/255, 32/255, 50/255, 1
+        left_action_items: [["menu", lambda x: app.callback_2(x)]]
+        right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+        spacing: 20
+        size_hint: 1, 0.2
+        canvas:
+            Color:
+                rgba: 51/255, 71/255, 86/255, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        MDBoxLayout:
+            orientation: 'vertical'
+   
+            # size_hint_x: 0.5
+            MDTextField:
+                id: ancho01
+                size_hint_x: .8
+                hint_text: "Ancho (cm)"
+                line_color_normal:255/255, 76/255, 41/255, 1
+                line_color_focus: 255/255, 255/255, 255/255, 1
+                hint_text_color_normal: 255/255, 255/255, 255/255, 1
+                hint_text_color_focus:255/255, 76/255, 41/255, 1
+                text_color_normal: 255/255, 255/255, 255/255, 1
+                pos_hint: {"center_x": .5, "center_y": .5}
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            id: remover01     
+            # size_hint_x: 0.5
+            MDTextField:
+                id: largo01
+                size_hint_x: .8
+                hint_text: "Largo (cm)"
+                line_color_normal:255/255, 76/255, 41/255, 1
+                line_color_focus: 255/255, 255/255, 255/255, 1
+                hint_text_color_normal: 255/255, 255/255, 255/255, 1
+                hint_text_color_focus:255/255, 76/255, 41/255, 1
+                text_color_normal: 255/255, 255/255, 255/255, 1
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: 'vertical'    
+            # size_hint_x: 0.5
+            MDTextField:
+                id: altura01
+                size_hint_x: .8
+                hint_text: "Altura (cm)"
+                line_color_normal:255/255, 76/255, 41/255, 1
+                line_color_focus: 255/255, 255/255, 255/255, 1
+                hint_text_color_normal: 255/255, 255/255, 255/255, 1
+                hint_text_color_focus:255/255, 76/255, 41/255, 1
+                text_color_normal: 255/255, 255/255, 255/255, 1
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+    MDBoxLayout:
+        size_hint: 1, 0.2
+        canvas:
+            Color:
+                rgba: 51/255, 71/255, 86/255, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        AnchorLayout:
+            # anchor_x:
+            MDFillRoundFlatButton:
+                # size_hint_x: 1
+                md_bg_color: 255/255, 76/255, 41/255, 1
+                text: "OK"
+                # pos_hint: {"center_x": .5, "center_y": .5}
+                on_press: app.getvolumen()    
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 1.5
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.3
+            canvas:
+                Color:
+                    rgba: 44/255, 57/255, 75/255, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDLabel:
+                id: unidades01
+                text: "Litros"
+                color: 255/255, 255/255, 255/255, 1
+                size_hint: 0.5, 1
+                halign: "center"
+
+            MDSlider:
+                id: slider01
+                min: 0
+                max: 10
+                step: 1
+                color: 255/255, 255/255, 255/255, 1
+                hint_bg_color: 255/255, 255/255, 255/255, 1
+                hint_text_color: 44/255, 5/255, 75/255, 1
+                orientation: 'horizontal'
+                on_value: app.slider(*args)
+        
+        MDBoxLayout:
+            size_hint: 1, 0.2
+            canvas:
+                Color:
+                    rgba: 44/255, 57/255, 75/255, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDLabel:
+                id: cantidad01
+                text: "0"
+                color: 255/255, 255/255, 255/255, 1
+                size_hint: 0.5, 1
+                halign: "center" 
+        
+        ScrollView:
+
+            MDList:
+                id: container
+
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.5
+            canvas:
+                Color:
+                    rgba: 8/255, 32/255, 50/255, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            MDBoxLayout:
+                AnchorLayout:
+                    MDFillRoundFlatButton:
+                        md_bg_color: 255/255, 76/255, 41/255, 1
+                        text: "Programar"
+                        on_press: app.calculo()
+
+
+            MDBoxLayout:
+                padding: 10
+                MDLabel:
+                    id: resultado
+                    text: ""
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
