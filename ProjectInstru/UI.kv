@@ -2,10 +2,10 @@
 
 MDBoxLayout:
     orientation: "vertical"
-    conf_temp: temp01
-    conf_hum: hum01
+
     conf_venti_icon: venti01
     conf_foco_icon: foco01
+    lable_temp: temp02
 
     MDTopAppBar:
         title: "CONTROL DE INCUBADORA"
@@ -47,7 +47,7 @@ MDBoxLayout:
             MDBoxLayout:
                 orientation: 'horizontal'
                 MDLabel:
-                    text: 'Configurar Parametros'
+                    text: 'Configurar Temperatura'
                     size: self.size
                     color: 1, 1, 1, 1
                     bold: True
@@ -65,10 +65,10 @@ MDBoxLayout:
                     # center_x: self.parent.center_x
                     # center_y: self.parent.center_y
             MDTextField:
-                id: temp01
+                id: temp_min01
                 size_hint_x: 0.8
                 # size_hint_y: 0.2
-                hint_text: 'Grados Celsius °C'
+                hint_text: 'Grados Celsius °C (Min)'
                 line_color_normal:255/255, 76/255, 41/255, 1
                 line_color_focus: 255/255, 255/255, 255/255, 1
                 hint_text_color_normal: 255/255, 255/255, 255/255, 1
@@ -76,9 +76,9 @@ MDBoxLayout:
                 text_color_normal: 255/255, 255/255, 255/255, 1
                 pos_hint: {"center_x": .5, "center_y": 100}
             MDTextField:
-                id: hum01
+                id: temp_max01
                 size_hint_x: 0.8
-                hint_text: 'Porcentaje de Humedad (%)'
+                hint_text: 'Grados Celsius °C (Max)'
                 line_color_normal:255/255, 76/255, 41/255, 1
                 line_color_focus: 255/255, 255/255, 255/255, 1
                 hint_text_color_normal: 255/255, 255/255, 255/255, 1
@@ -131,7 +131,7 @@ MDBoxLayout:
                 # size: self.size
                 color: 1, 1, 1, 1
                 bold: True
-                font_size: 32
+                font_size: 28
                 text_size: 200, 200
                 # canvas.before:
                 #     Color:
@@ -152,7 +152,7 @@ MDBoxLayout:
                         on_press: app.toggle_fan()
                         Image:
                             id: venti01
-                            source: './ventiladorON.gif'
+                            source: './ventiladorOFF.png'
                             center_x: self.parent.center_x
                             center_y: self.parent.center_y
                     MDLabel:
@@ -209,7 +209,6 @@ MDBoxLayout:
                 bold: True
                 font_size: 25
             MDLabel:
-                id: hum02
                 text: 'Humedad'
                 # size_hint: 0.5, 1
                 halign: "center"
@@ -223,6 +222,7 @@ MDBoxLayout:
                         size: self.size
                         pos: self.pos
             MDLabel:
+                id: hum02
                 text: '80%'
                 # size_hint: 0.5, 1
                 halign: "center"
